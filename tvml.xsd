@@ -1,0 +1,102 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  
+
+  <xs:element name="Programacion">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element type="myFecha" name="Fecha" minOccurs="1" maxOccurs="1"/>
+
+
+        <xs:element name="Canal" maxOccurs="unbounded" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="NombreCanal" minOccurs="1" maxOccurs="1"/>
+              <xs:element type="xs:string" name="Grupo" minOccurs="0" maxOccurs="1"/>
+              
+              <xs:element name="Programa" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="NombrePrograma" maxOccurs="1" minOccurs="1"/>
+                    <xs:element type="category" name="Categoria" maxOccurs="1" minOccurs="1"/>
+                    <xs:element type="time" name="HoraInicio" maxOccurs="1" minOccurs="1"/>
+                    <xs:choice maxOccurs="1" minOccurs="1">
+                       <xs:element type="time" name="HoraFin"/>
+                       
+                        <xs:element type="positivo" name="Duracion"/>
+                    </xs:choice>
+					            <xs:element name="OtraEmision" minOccurs="0" maxOccurs="unbounded">
+                       <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="tvml" name="TVML"/>
+                        </xs:sequence>
+                        <xs:attribute  type="myFecha" name="fecha"/>
+                      </xs:complexType>
+                    </xs:element>
+                    
+                  </xs:sequence>
+                
+                    
+                  <xs:attribute type="positivo" name="edadminima" use="required"/>                
+                  <xs:attribute type="langs" name="langs" use="optional"/>
+                 
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute  type="langs" name="lang" use="required"/>
+            
+
+            <xs:attribute type="positivo"  name="idCanal" use="required"/>
+          
+          </xs:complexType>
+
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:unique name ="myID">
+      <xs:selector xpath="Canal"/>
+      <xs:field xpath ="@idCanal"/>
+    </xs:unique>
+
+  </xs:element>
+  <xs:simpleType name="positivo" id="positivo">
+ 				<xs:restriction base="xs:nonNegativeInteger">
+ 					<xs:minInclusive value="1"/>
+ 				</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="category">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Cine"/>
+            <xs:enumeration value="Informativos"/>
+            <xs:enumeration value="Documentales"/>
+            <xs:enumeration value="Infantiles"/>
+            <xs:enumeration value="Deportes"/>
+        </xs:restriction>
+
+    </xs:simpleType>
+  <xs:simpleType name="myFecha">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-2][0-9][0-9][0-9][/][0-1][0-9][/][0-3][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+   <xs:simpleType name="time">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-2][0-9][:][0-5][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="langs">
+    <xs:restriction base="xs:string">
+     <xs:pattern value="(\w{2}\s?)*"/> 
+    </xs:restriction>
+  </xs:simpleType>
+
+   <xs:simpleType name="tvml">
+    <xs:restriction base="xs:string">
+     <xs:pattern value="tvml-\d{4}-[0-1][0-9]-[0-3][0-9].xml"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

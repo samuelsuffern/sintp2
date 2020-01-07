@@ -1,0 +1,41 @@
+h1{
+  font-style: italic;
+  color:black;
+
+
+
+}
+button{
+  background-color: black;
+  border: 1;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 25pt;
+}
+h2{
+  color:red;
+  margin-left: 25pt;
+}
+body{
+  background-color: yellow;
+}
+#canales{
+  margin-top: 10pt;
+  font-weight: bold;
+  font-size:20pt;
+  text-align: center;
+  padding-bottom: 25pt;
+  color:black
+}
+#canal{
+    margin-left: 50pt;
+    margin-top: 15pt;
+    font-style: italic;
+}
+#programa{
+  margin-left: 20pt;
+  font-weight: bold;
+}

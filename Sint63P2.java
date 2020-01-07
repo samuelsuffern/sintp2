@@ -367,14 +367,14 @@ public class Sint63P2 extends HttpServlet {
 
 	public void fase02auto(HttpServletResponse res){
 		res.setContentType("text/xml");
-		res.setCharacterEncoding("iso-8859-1");
+		res.setCharacterEncoding("utf-8");
 		PrintWriter out = null;
 		try {
 			out = res.getWriter();
 		} catch (Exception e) {
 			//TODO: handle exception
 		}
-		out.write("<?xml version='1.0' encoding = 'iso-8859-1' ?>");
+		out.write("<?xml version='1.0' encoding = 'utf-8' ?>");
 		out.write("<errores>");
 		out.write("<warnings>");
 		if(warnings.size()>0){
@@ -475,7 +475,7 @@ public class Sint63P2 extends HttpServlet {
 
 	public void fase12auto(HttpServletResponse res,String fecha){
 		res.setContentType("text/xml");
-		res.setCharacterEncoding("iso-8859-1");
+		res.setCharacterEncoding("utf-8");
 		PrintWriter out = null;
 		try {
 			out = res.getWriter();
@@ -483,7 +483,7 @@ public class Sint63P2 extends HttpServlet {
 			//TODO: handle exception
 		}
 
-		out.write("<?xml version='1.0' encoding = 'iso-8859-1' ?>");
+		out.write("<?xml version='1.0' encoding = 'utf-8' ?>");
 		out.write("<canales>");
 
 		for (Canal canal:getC1Canales(fecha)) {
@@ -495,7 +495,7 @@ public class Sint63P2 extends HttpServlet {
 
 	public void fase13auto(HttpServletResponse res,String fecha,String canal){
 		res.setContentType("text/xml");
-		res.setCharacterEncoding("iso-8859-1");
+		res.setCharacterEncoding("utf-8");
 		PrintWriter out = null;
 		try {
 			out = res.getWriter();
@@ -503,7 +503,7 @@ public class Sint63P2 extends HttpServlet {
 			//TODO: handle exception
 		}
 
-		out.write("<?xml version='1.0' encoding = 'iso-8859-1' ?>");
+		out.write("<?xml version='1.0' encoding = 'utf-8' ?>");
 		out.write("<peliculas>");
 
 		for (Programa p:getC1Peliculas(fecha, canal)) {
